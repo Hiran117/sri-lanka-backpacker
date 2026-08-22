@@ -1,6 +1,11 @@
 import { destinations, getDestination } from "@/data/destinations";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { auth } from "@/auth";
+import { supabase } from "@/lib/supabase";
+import PlaceChecklist from "@/components/PlaceChecklist";
+import ReviewSection from "@/components/ReviewSection";
+import { markVisited } from "./actions";
 
 export function generateStaticParams() {
   return destinations.map((d) => ({ slug: d.slug }));
@@ -26,13 +31,53 @@ export default async function DestinationPage({ params }) {
   const dest = getDestination(slug);
   if (!dest) notFound();
 
+  const session = await auth();
+  const signedIn = !!session?.user?.email;
+
+  let initialChecked = [];
+  let reviews = [];
+
+  if (signedIn) {
+    const { data: checkins } = await supabase
+      .from("checkins")
+      .select("place_name")
+      .eq("user_email", session.user.email)
+      .eq("destination_slug", slug)
+      .eq("checked", true);
+    initialChecked = (checkins || []).map((c) => c.place_name);
+  }
+
+  const { data: reviewRows } = await supabase
+    .from("reviews")
+    .select("*")
+    .eq("destination_slug", slug)
+    .order("created_at", { ascending: false });
+  reviews = reviewRows || [];
+
   return (
     <div className="max-w-3xl mx-auto px-4 py-12">
       <p className="text-terracotta font-medium mb-2">
         Stop {dest.order} of {destinations.length}
       </p>
       <h1 className="font-display font-bold text-3xl md:text-5xl mb-4">{dest.name}</h1>
-      <p className="text-ink/70 text-lg mb-10">{dest.intro}</p>
+      <p className="text-ink/70 text-lg mb-6">{dest.intro}</p>
+
+      {signedIn && (
+        <form
+          action={async () => {
+            "use server";
+            await markVisited(slug);
+          }}
+          className="mb-10"
+        >
+          <button
+            type="submit"
+            className="bg-terracotta text-cream px-4 py-2 rounded-lg text-sm font-medium hover:bg-terracotta/90"
+          >
+            📍 I'm here — mark as visited
+          </button>
+        </form>
+      )}
 
       <section className="mb-10">
         <h2 className="font-display font-bold text-xl mb-4">
@@ -55,25 +100,24 @@ export default async function DestinationPage({ params }) {
 
       <section className="mb-10">
         <h2 className="font-display font-bold text-xl mb-4">Explore in {dest.name}</h2>
-        <div className="grid gap-3">
-          {dest.exploreHere.map((place) => {
-            const url = mapLink(place.name, dest.name);
-            return (
-              <Link
-                key={place.name}
-                href={url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="border border-ink/10 rounded-xl p-4 bg-white hover:border-terracotta transition-colors flex justify-between items-center gap-2"
-              >
-                <div>
-                  <p className="font-medium">{place.name}</p>
-                  <p className="text-ink/60 text-sm">{place.note}</p>
-                </div>
-                <span className="text-terracotta text-sm whitespace-nowrap">Get route →</span>
-              </Link>
-            );
-          })}
+        <PlaceChecklist
+          destinationSlug={slug}
+          places={dest.exploreHere}
+          initialChecked={initialChecked}
+          signedIn={signedIn}
+        />
+        <div className="grid gap-2 mt-3">
+          {dest.exploreHere.map((place) => (
+            <Link
+              key={place.name}
+              href={mapLink(place.name, dest.name)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs text-tea hover:underline"
+            >
+              Get route to {place.name} →
+            </Link>
+          ))}
         </div>
       </section>
 
@@ -89,7 +133,9 @@ export default async function DestinationPage({ params }) {
         </div>
       </section>
 
-      <section className="bg-terracotta/10 rounded-2xl p-6 text-center">
+      <ReviewSection destinationSlug={slug} reviews={reviews} signedIn={signedIn} />
+
+      <section className="bg-terracotta/10 rounded-2xl p-6 text-center mt-10">
         <p className="text-ink/60 mb-2">Next stop</p>
         <Link
           href={`/destinations/${dest.next.slug}`}

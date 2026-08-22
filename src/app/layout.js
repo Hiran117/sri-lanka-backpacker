@@ -2,6 +2,7 @@ import { Poppins, Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import AuthButton from "@/components/AuthButton";
 
 const display = Poppins({
   subsets: ["latin"],
@@ -24,7 +25,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${display.variable} ${body.variable} font-body bg-cream text-ink`}>
-        <Navbar />
+        <Navbar authSlot={<AuthButton />} />
         <main className="min-h-screen">{children}</main>
         <Footer />
       </body>

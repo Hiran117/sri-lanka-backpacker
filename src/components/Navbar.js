@@ -9,7 +9,7 @@ const links = [
   { href: "/blog", label: "Guides" },
 ];
 
-export default function Navbar() {
+export default function Navbar({ authSlot }) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -19,57 +19,36 @@ export default function Navbar() {
           Lanka<span className="text-terracotta">Trail</span>
         </Link>
 
-        {/* Desktop nav */}
         <nav className="hidden md:flex gap-8 font-medium">
           {links.map((l) => (
-            <Link
-              key={l.href}
-              href={l.href}
-              className="text-ink/80 hover:text-tea transition-colors"
-            >
+            <Link key={l.href} href={l.href} className="text-ink/80 hover:text-tea transition-colors">
               {l.label}
             </Link>
           ))}
         </nav>
 
-        {/* Mobile toggle */}
+        <div className="hidden md:block">{authSlot}</div>
+
         <button
           className="md:hidden flex flex-col gap-1.5 w-8 h-8 justify-center items-center"
           onClick={() => setOpen(!open)}
           aria-label="Toggle menu"
           aria-expanded={open}
         >
-          <span
-            className={`block h-0.5 w-6 bg-ink transition-transform ${
-              open ? "rotate-45 translate-y-2" : ""
-            }`}
-          />
-          <span
-            className={`block h-0.5 w-6 bg-ink transition-opacity ${
-              open ? "opacity-0" : ""
-            }`}
-          />
-          <span
-            className={`block h-0.5 w-6 bg-ink transition-transform ${
-              open ? "-rotate-45 -translate-y-2" : ""
-            }`}
-          />
+          <span className={`block h-0.5 w-6 bg-ink transition-transform ${open ? "rotate-45 translate-y-2" : ""}`} />
+          <span className={`block h-0.5 w-6 bg-ink transition-opacity ${open ? "opacity-0" : ""}`} />
+          <span className={`block h-0.5 w-6 bg-ink transition-transform ${open ? "-rotate-45 -translate-y-2" : ""}`} />
         </button>
       </div>
 
-      {/* Mobile menu */}
       {open && (
         <nav className="md:hidden flex flex-col px-4 pb-4 gap-2 font-medium">
           {links.map((l) => (
-            <Link
-              key={l.href}
-              href={l.href}
-              className="py-2 text-ink/80 hover:text-tea"
-              onClick={() => setOpen(false)}
-            >
+            <Link key={l.href} href={l.href} className="py-2 text-ink/80 hover:text-tea" onClick={() => setOpen(false)}>
               {l.label}
             </Link>
           ))}
+          <div className="pt-2">{authSlot}</div>
         </nav>
       )}
     </header>

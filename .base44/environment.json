@@ -1,0 +1,12 @@
+{
+  "previewPort": 3000,
+  "healthPath": "/",
+  "startCommand": "docker compose -f docker-compose.base44.yml up -d",
+  "secrets": [
+    { "name": "NEXT_PUBLIC_SUPABASE_URL", "description": "Supabase project URL (Dashboard → Project Settings → Data API).", "requiredAtBoot": false },
+    { "name": "NEXT_PUBLIC_SUPABASE_ANON_KEY", "description": "Supabase publishable/anon key (Dashboard → Project Settings → API Keys).", "requiredAtBoot": false },
+    { "name": "AUTH_SECRET", "description": "Auth.js session secret (reuse deployed value or generate with openssl rand -base64 32).", "requiredAtBoot": false },
+    { "name": "AUTH_GOOGLE_ID", "description": "Google OAuth web client ID (Google Cloud Console → Credentials).", "requiredAtBoot": false },
+    { "name": "AUTH_GOOGLE_SECRET", "description": "Google OAuth web client secret (Google Cloud Console → Credentials).", "requiredAtBoot": false }
+  ]
+}

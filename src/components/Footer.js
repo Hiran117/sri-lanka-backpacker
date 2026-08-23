@@ -5,6 +5,7 @@ const footerLinks = [
   { href: "/routes", label: "Plan a Route" },
   { href: "/blog", label: "Guides" },
   { href: "/signin", label: "Sign In" },
+    { href: "/privacy", label: "Privacy Policy" },
 ];
 
 export default function Footer() {

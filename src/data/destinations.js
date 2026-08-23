@@ -85,8 +85,7 @@ next: { slug: "nuwara-eliya", name: "Nuwara Eliya" },  },
   slug: "nuwara-eliya",
   name: "Nuwara Eliya",
   order: 4,
-  image: "PASTE_PEXELS_URL_HERE",
-  intro: "Sri Lanka's cool hill-country escape — colonial architecture, tea plantations, and a totally different climate from the rest of the island.",
+image: "https://images.pexels.com/photos/2007401/pexels-photo-2007401.jpeg",  intro: "Sri Lanka's cool hill-country escape — colonial architecture, tea plantations, and a totally different climate from the rest of the island.",
   howYouGotHere: {
     from: "Ella",
     options: [

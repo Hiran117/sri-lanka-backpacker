@@ -73,11 +73,12 @@ export default async function RoutePage({ params }) {
           </div>
           <Link
             href="/signup"
-            className="inline-block bg-jungle text-parchment px-6 py-3 rounded-lg text-sm font-semibold hover:bg-jungle/90"
+            className="inline-block bg-jungle text-parchment px-6 py-3 rounded-lg text-sm font-semibold hover:bg-jungle/90 transition-colors"
           >
             Sign up free
           </Link>
         </div>
+        </Reveal>
       ) : (
         <div className="relative">
           <div className="absolute left-6 top-2 bottom-2 w-0.5 bg-jungle/20" />

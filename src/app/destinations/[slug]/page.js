@@ -8,6 +8,7 @@ import Link from "next/link";
 import PlaceChecklist from "@/components/PlaceChecklist";
 import ReviewSection from "@/components/ReviewSection";
 import GpsCheckin from "@/components/GpsCheckin";
+import Reveal from "@/components/Reveal";
 
 export function generateStaticParams() {
   return destinations.map((d) => ({ slug: d.slug }));

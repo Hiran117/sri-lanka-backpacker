@@ -28,3 +28,7 @@ Transport barely registers as a cost. Buses and trains between towns rarely cros
 Add it up and most backpackers land somewhere between 4,000-6,500 rupees a day total. That's without being stingy — just not throwing money at things tourists get talked into paying more for.`,
   },
 ];
+
+export function getPost(slug) {
+  return posts.find((p) => p.slug === slug);
+}

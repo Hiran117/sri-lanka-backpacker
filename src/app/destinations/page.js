@@ -1,5 +1,6 @@
 import { destinations } from "@/data/destinations";
 import Link from "next/link";
+import Image from "next/image";
 
 export const metadata = {
   title: "All Destinations — LankaTrail",
@@ -23,11 +24,21 @@ export default function DestinationsIndexPage() {
           <Link
             key={dest.slug}
             href={`/destinations/${dest.slug}`}
-            className="border border-ink/10 rounded-2xl p-5 bg-white hover:border-terracotta hover:shadow-md transition-all"
+            className="group border border-ink/10 rounded-2xl overflow-hidden bg-white hover:border-terracotta hover:shadow-md transition-all"
           >
-            <span className="text-xs font-medium text-terracotta">Stop {dest.order}</span>
-            <p className="font-display font-bold text-xl mt-1 mb-2">{dest.name}</p>
-            <p className="text-ink/60 text-sm line-clamp-3">{dest.intro}</p>
+            <div className="relative w-full h-40">
+              <Image
+                src={dest.image}
+                alt={dest.name}
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+            </div>
+            <div className="p-5">
+              <span className="text-xs font-medium text-terracotta">Stop {dest.order}</span>
+              <p className="font-display font-bold text-xl mt-1 mb-2">{dest.name}</p>
+              <p className="text-ink/60 text-sm line-clamp-3">{dest.intro}</p>
+            </div>
           </Link>
         ))}
       </div>

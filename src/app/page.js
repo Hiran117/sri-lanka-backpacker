@@ -1,9 +1,9 @@
 import StartSelector from "@/components/StartSelector";
 import Link from "next/link";
+import Image from "next/image";
+import { destinations } from "@/data/destinations";
 
-const circuit = [
-  "Colombo", "Kandy", "Ella", "Nuwara Eliya", "Mirissa", "Galle",
-];
+const circuit = [...destinations].sort((a, b) => a.order - b.order);
 
 export default function Home() {
   return (
@@ -37,19 +37,26 @@ export default function Home() {
           The route most backpackers follow — hill country to coast.
         </p>
 
-        <div className="flex flex-wrap justify-center items-center gap-3">
-          {circuit.map((place, i) => (
-            <div key={place} className="flex items-center gap-3">
-              <Link
-                href={`/destinations/${place.toLowerCase().replace(" ", "-")}`}
-                className="bg-white border border-ink/10 rounded-full px-5 py-2.5 font-medium hover:border-terracotta hover:text-terracotta transition-colors shadow-sm"
-              >
-                {place}
-              </Link>
-              {i < circuit.length - 1 && (
-                <span className="text-terracotta text-lg">→</span>
-              )}
-            </div>
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+          {circuit.map((dest, i) => (
+            <Link
+              key={dest.slug}
+              href={`/destinations/${dest.slug}`}
+              className="group relative rounded-2xl overflow-hidden aspect-4/5 shadow-sm hover:shadow-lg transition-shadow animate-fade-in"
+              style={{ animationDelay: `${i * 80}ms` }}
+            >
+              <Image
+                src={dest.image}
+                alt={dest.name}
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+              <div className="absolute inset-0 bg-linear-to-t from-ink/80 via-ink/10 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-3">
+                <span className="text-xs text-cream/70 font-medium">Stop {dest.order}</span>
+                <p className="text-cream font-display font-bold text-lg leading-tight">{dest.name}</p>
+              </div>
+            </Link>
           ))}
         </div>
       </section>

@@ -1,4 +1,5 @@
-import { auth, signIn, signOut } from "@/auth";
+import { auth, signOut } from "@/auth";
+import Link from "next/link";
 
 export default async function AuthButton() {
   const session = await auth();
@@ -19,15 +20,8 @@ export default async function AuthButton() {
   }
 
   return (
-    <form
-      action={async () => {
-        "use server";
-        await signIn("google");
-      }}
-    >
-      <button className="text-sm font-medium text-tea hover:underline">
-        Sign in
-      </button>
-    </form>
+    <Link href="/signin" className="text-sm font-medium text-tea hover:underline">
+      Sign in
+    </Link>
   );
 }

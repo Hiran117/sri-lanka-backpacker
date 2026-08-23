@@ -6,6 +6,7 @@ import { supabase } from "@/lib/supabase";
 import PlaceChecklist from "@/components/PlaceChecklist";
 import ReviewSection from "@/components/ReviewSection";
 import { markVisited } from "./actions";
+import Image from "next/image";
 
 export function generateStaticParams() {
   return destinations.map((d) => ({ slug: d.slug }));
@@ -56,6 +57,16 @@ export default async function DestinationPage({ params }) {
 
   return (
     <div className="max-w-3xl mx-auto px-4 py-12">
+      <div className="relative w-full h-56 sm:h-72 md:h-80 rounded-2xl overflow-hidden mb-8 -mt-4">
+        <Image
+          src={dest.image}
+          alt={dest.name}
+          fill
+          className="object-cover"
+          priority
+        />
+        <div className="absolute inset-0 bg-linear-to-t from-ink/60 to-transparent" />
+      </div>
       <p className="text-terracotta font-medium mb-2">
         Stop {dest.order} of {destinations.length}
       </p>

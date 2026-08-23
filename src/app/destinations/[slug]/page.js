@@ -147,11 +147,12 @@ export default async function DestinationPage({ params, searchParams }) {
         <section className="mb-10">
           <h2 className="font-display font-bold text-xl mb-4">Explore Here</h2>
           <PlaceChecklist
-            destinationSlug={slug}
-            places={dest.exploreHere}
-            initialChecked={initialChecked}
-            signedIn={signedIn}
-          />
+  destinationSlug={slug}
+  destName={dest.name}
+  places={dest.exploreHere}
+  initialChecked={initialChecked}
+  signedIn={signedIn}
+/>
         </section>
 
         {/* Stay & Eat */}

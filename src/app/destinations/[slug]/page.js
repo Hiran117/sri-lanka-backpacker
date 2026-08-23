@@ -123,6 +123,11 @@ export default async function DestinationPage({ params, searchParams }) {
 
       <div className="max-w-3xl mx-auto px-4 py-10">
         <p className="text-ink/70 text-lg mb-8">{dest.intro}</p>
+        {dest.lastUpdated && (
+  <p className="text-xs text-ink/40 font-mono -mt-6 mb-8">
+    Prices & transport info verified: {new Date(dest.lastUpdated).toLocaleDateString("en-US", { month: "long", year: "numeric" })}
+  </p>
+)}
 
         {!signedIn && (
           <div className="bg-jungle/10 border border-jungle/30 rounded-2xl p-5 mb-10 text-center">

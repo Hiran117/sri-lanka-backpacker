@@ -118,17 +118,17 @@ export default async function Home() {
                       <span className="text-xs text-ink/50 font-medium">{route.days}</span>
                     </div>
                     <p className="font-display font-bold text-xl md:text-2xl mb-1 group-hover:text-rust transition-colors">{route.name}</p>
-                    <p className="text-ink/60 text-sm mb-4">{route.tagline}</p>
-                    <p className="text-xs text-ink/50 flex items-center gap-1.5 flex-wrap">
-                      <span className="inline-block w-1.5 h-1.5 rounded-full bg-jungle" />
-                      {uniqueSlugs.length} stops · {previewDests.join(" → ")}
-                      {uniqueSlugs.length > 4 ? "..." : ""}
-                    </p>
-                    {!signedIn && (
-                      <p className="text-xs text-jungle font-medium mt-3 flex items-center gap-1 group-hover:gap-2 transition-all">
-                        Sign in to see the full day-by-day route →
-                      </p>
-                    )}
+<p className="text-ink/60 text-sm mb-4">{route.tagline}</p>
+<p className="text-xs text-ink/50 flex items-center gap-1.5 flex-wrap">
+  <span className="inline-block w-1.5 h-1.5 rounded-full bg-jungle" />
+  {uniqueSlugs.length} stops · {previewDests.join(" → ")}
+  {uniqueSlugs.length > 4 ? "..." : ""}
+</p>
+{!signedIn && (
+  <p className="text-xs text-jungle font-medium mt-3 flex items-center gap-1 group-hover:gap-2 transition-all">
+    Track your progress — sign in free →
+  </p>
+)}
                   </div>
                 </Link>
               </Reveal>

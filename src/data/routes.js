@@ -2,6 +2,7 @@ export const routes = [
   {
     slug: "classic-circuit",
     name: "The Classic Circuit",
+    lastUpdated: "2026-08-23", 
     tagline: "Hill country to south coast — the most-traveled backpacker route",
     popularity: "Most popular",
     days: "7-10 days",
@@ -10,6 +11,7 @@ export const routes = [
   {
     slug: "south-coast-surf-safari",
     name: "South Coast Surf & Safari",
+    lastUpdated: "2026-08-23",
     tagline: "Beaches, surf towns, and Yala's leopards — best for a shorter, beach-focused trip",
     popularity: "Rising favorite",
     days: "6-9 days",
@@ -18,6 +20,7 @@ export const routes = [
   {
     slug: "cultural-triangle",
     name: "Cultural Triangle + Hill Country",
+    lastUpdated: "2026-08-23",
     tagline: "Ancient ruins, ancient temples, then up into tea country",
     popularity: "Highly rated",
     days: "10-12 days",
@@ -26,6 +29,7 @@ export const routes = [
   {
     slug: "east-coast",
     name: "East Coast Escape",
+    lastUpdated: "2026-08-23",
     tagline: "Surf towns and quieter beaches — rising favorite among longer-stay backpackers",
     popularity: "Rising favorite",
     days: "6-8 days",
@@ -34,6 +38,7 @@ export const routes = [
   {
     slug: "full-island",
     name: "The Full Island",
+    lastUpdated: "2026-08-23",
     tagline: "Everything — for backpackers with 3+ weeks",
     popularity: "For the committed",
     days: "18-21 days",
@@ -50,8 +55,6 @@ export function getRoute(slug) {
   return routes.find((r) => r.slug === slug);
 }
 
-// Returns the destination slug that comes after `currentSlug` within a given route.
-// Handles the case where a slug (like colombo) appears twice, at the very start and end.
 export function getNextInRoute(routeSlug, currentSlug) {
   const route = getRoute(routeSlug);
   if (!route) return null;

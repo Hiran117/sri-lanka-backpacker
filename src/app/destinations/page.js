@@ -13,6 +13,23 @@ export default function DestinationsIndexPage() {
 
   return (
     <div className="max-w-5xl mx-auto px-4 py-12">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ItemList",
+            name: "Sri Lanka Backpacker Destinations",
+            itemListElement: sorted.map((dest, i) => ({
+              "@type": "ListItem",
+              position: i + 1,
+              name: dest.name,
+              url: `https://sri-lanka-backpacker.vercel.app/destinations/${dest.slug}`,
+            })),
+          }),
+        }}
+      />
+
       <Reveal>
         <h1 className="font-display font-bold text-3xl md:text-5xl mb-4">
           Destinations

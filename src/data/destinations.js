@@ -4,7 +4,7 @@ export const destinations = [
     name: "Colombo",
     order: 1,
     intro: "Sri Lanka's chaotic, humid capital — most backpackers pass through here first, either from the airport or the port.",
-    image: "https://images.unsplash.com/photo-1591977879538-c1a625060c15?w=1200&q=80",
+    image: "https://images.pexels.com/photos/30379285/pexels-photo-30379285.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
     coords: { lat: 6.9271, lng: 79.8612 },
     howYouGotHere: {
       from: "Bandaranaike International Airport (CMB)",
@@ -28,7 +28,7 @@ export const destinations = [
     slug: "kandy",
     name: "Kandy",
     order: 2,
-    image: "https://images.unsplash.com/photo-1546708973-b339540b5162?w=1200&q=80",
+    image: "https://images.pexels.com/photos/14041994/pexels-photo-14041994.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
     coords: { lat: 7.2906, lng: 80.6337 },
     intro: "Cultural heart of Sri Lanka, hill-country gateway, and the start of the famous train ride to Ella.",
     howYouGotHere: {
@@ -52,7 +52,7 @@ export const destinations = [
     slug: "ella",
     name: "Ella",
     order: 3,
-    image: "https://images.unsplash.com/photo-1586183189334-1e39d5b5cf5e?w=1200&q=80",
+    image: "https://images.pexels.com/photos/38974687/pexels-photo-38974687.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
     coords: { lat: 6.8667, lng: 81.0466 },
     intro: "The postcard hill-country town — famous for the Nine Arch Bridge and the train ride to get here.",
     howYouGotHere: {
@@ -76,7 +76,7 @@ export const destinations = [
     slug: "mirissa",
     name: "Mirissa",
     order: 4,
-    image: "https://images.unsplash.com/photo-1586813070208-3f95d5c9d963?w=1200&q=80",
+    image: "https://images.pexels.com/photos/35637889/pexels-photo-35637889.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
     coords: { lat: 5.9483, lng: 80.4589 },
     intro: "Laid-back beach town on the south coast — whale watching, surf, and hammocks.",
     howYouGotHere: {
@@ -99,7 +99,7 @@ export const destinations = [
     slug: "galle",
     name: "Galle",
     order: 5,
-    image: "https://images.unsplash.com/photo-1560087637-bf797bc7796a?w=1200&q=80",
+    image: "https://images.pexels.com/photos/27669331/pexels-photo-27669331.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
     coords: { lat: 6.0535, lng: 80.2210 },
     intro: "Historic Dutch fort town — the last stop before heading back to Colombo.",
     howYouGotHere: {

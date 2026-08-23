@@ -25,41 +25,75 @@ export default function Home() {
           </p>
 
           <StartSelector />
+          <p className="text-ink/50 text-sm mt-6">
+  <Link href="/signup" className="text-tea font-medium hover:underline">
+    Create a free account
+  </Link>{" "}
+  to track your progress, check in with GPS, and leave reviews as you travel.
+</p>
         </div>
       </section>
 
-      {/* Trail overview */}
-      <section className="max-w-6xl mx-auto px-4 py-20">
-        <h2 className="font-display font-bold text-2xl md:text-3xl text-center mb-2">
-          The Classic Circuit
-        </h2>
-        <p className="text-ink/60 text-center mb-12">
-          The route most backpackers follow — hill country to coast.
-        </p>
+    {/* Trail overview — connected route flow */}
+<section className="max-w-6xl mx-auto px-4 py-20">
+  <h2 className="font-display font-bold text-2xl md:text-3xl text-center mb-2">
+    The Classic Circuit
+  </h2>
+  <p className="text-ink/60 text-center mb-14">
+    Hill country to coast — follow the route, or jump to any stop.
+  </p>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-          {circuit.map((dest, i) => (
-            <Link
-              key={dest.slug}
-              href={`/destinations/${dest.slug}`}
-              className="group relative rounded-2xl overflow-hidden aspect-4/5 shadow-sm hover:shadow-lg transition-shadow animate-fade-in"
-              style={{ animationDelay: `${i * 80}ms` }}
-            >
-              <Image
-                src={dest.image}
-                alt={dest.name}
-                fill
-                className="object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-linear-to-t from-ink/80 via-ink/10 to-transparent" />
-              <div className="absolute bottom-0 left-0 right-0 p-3">
-                <span className="text-xs text-cream/70 font-medium">Stop {dest.order}</span>
-                <p className="text-cream font-display font-bold text-lg leading-tight">{dest.name}</p>
-              </div>
-            </Link>
-          ))}
+  <div className="relative">
+    {/* Desktop: horizontal connected flow */}
+    <div className="hidden md:flex items-center justify-between relative">
+      <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-linear-to-r from-tea/20 via-terracotta/40 to-tea/20 -translate-y-1/2" />
+      {circuit.map((dest, i) => (
+        <div key={dest.slug} className="relative z-10 flex items-center">
+          <Link
+            href={`/destinations/${dest.slug}`}
+            className="group flex flex-col items-center gap-3 animate-fade-in"
+            style={{ animationDelay: `${i * 100}ms` }}
+          >
+            <div className="relative w-24 h-24 rounded-full overflow-hidden ring-4 ring-cream shadow-md group-hover:ring-terracotta transition-all">
+              <Image src={dest.image} alt={dest.name} fill className="object-cover group-hover:scale-110 transition-transform duration-500" />
+            </div>
+            <div className="text-center">
+              <p className="text-xs text-terracotta font-medium">Stop {dest.order}</p>
+              <p className="font-display font-bold text-sm">{dest.name}</p>
+            </div>
+          </Link>
+          {i < circuit.length - 1 && (
+            <span className="text-terracotta text-2xl mx-2">→</span>
+          )}
         </div>
-      </section>
+      ))}
+    </div>
+
+    {/* Mobile: vertical connected flow */}
+    <div className="md:hidden flex flex-col gap-0">
+      {circuit.map((dest, i) => (
+        <div key={dest.slug} className="flex flex-col items-center">
+          <Link
+            href={`/destinations/${dest.slug}`}
+            className="group flex items-center gap-4 w-full bg-white border border-ink/10 rounded-2xl p-3 hover:border-terracotta transition-colors animate-fade-in"
+            style={{ animationDelay: `${i * 80}ms` }}
+          >
+            <div className="relative w-16 h-16 rounded-full overflow-hidden shrink-0">
+              <Image src={dest.image} alt={dest.name} fill className="object-cover" />
+            </div>
+            <div>
+              <p className="text-xs text-terracotta font-medium">Stop {dest.order}</p>
+              <p className="font-display font-bold text-base">{dest.name}</p>
+            </div>
+          </Link>
+          {i < circuit.length - 1 && (
+            <span className="text-terracotta text-xl my-1">↓</span>
+          )}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
 
       {/* Why this site */}
       <section className="bg-tea/5 py-20 px-4">

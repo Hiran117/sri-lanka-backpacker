@@ -68,15 +68,35 @@ export default async function DestinationPage({ params }) {
         />
         <div className="absolute inset-0 bg-linear-to-t from-ink/60 to-transparent" />
       </div>
+
+      {!signedIn && (
+        <div className="bg-tea/10 border border-tea/30 rounded-2xl p-5 mb-8 flex flex-col sm:flex-row sm:items-center gap-4 justify-between">
+          <div>
+            <p className="font-display font-bold text-lg text-tea mb-1">
+              Track your trip as you go
+            </p>
+            <p className="text-ink/70 text-sm">
+              Sign up free to check off places, track your progress through {dest.name}, and check in with GPS when you arrive.
+            </p>
+          </div>
+          <Link
+            href="/signup"
+            className="bg-tea text-cream px-5 py-2.5 rounded-lg text-sm font-semibold hover:bg-tea/90 transition-colors whitespace-nowrap text-center"
+          >
+            Sign up free
+          </Link>
+        </div>
+      )}
+
       <p className="text-terracotta font-medium mb-2">
         Stop {dest.order} of {destinations.length}
       </p>
       <h1 className="font-display font-bold text-3xl md:text-5xl mb-4">{dest.name}</h1>
       <p className="text-ink/70 text-lg mb-6">{dest.intro}</p>
 
-{signedIn && (
-  <GpsCheckin destinationSlug={slug} destName={dest.name} coords={dest.coords} />
-)}
+      {signedIn && (
+        <GpsCheckin destinationSlug={slug} destName={dest.name} coords={dest.coords} />
+      )}
 
       <section className="mb-10">
         <h2 className="font-display font-bold text-xl mb-4">

@@ -9,7 +9,10 @@ export default function PlaceChecklist({ destinationSlug, places, initialChecked
   const progress = Math.round((checkedSet.size / places.length) * 100);
 
   function toggle(placeName) {
-    if (!signedIn) return;
+    if (!signedIn) {
+      window.location.href = "/signin";
+      return;
+    }
     const next = new Set(checkedSet);
     const nowChecked = !next.has(placeName);
     nowChecked ? next.add(placeName) : next.delete(placeName);
@@ -43,12 +46,11 @@ export default function PlaceChecklist({ destinationSlug, places, initialChecked
             <button
               key={place.name}
               onClick={() => toggle(place.name)}
-              disabled={!signedIn}
               className={`text-left border rounded-xl p-4 flex justify-between items-center gap-2 transition-colors ${
                 isChecked
                   ? "border-tea bg-tea/10"
                   : "border-ink/10 bg-white hover:border-terracotta"
-              } ${!signedIn ? "opacity-70 cursor-default" : ""}`}
+              }`}
             >
               <div>
                 <p className="font-medium">
@@ -58,7 +60,9 @@ export default function PlaceChecklist({ destinationSlug, places, initialChecked
                 <p className="text-ink/60 text-sm">{place.note}</p>
               </div>
               {!signedIn && (
-                <span className="text-xs text-ink/40 whitespace-nowrap">Sign in to track</span>
+                <span className="text-xs text-tea whitespace-nowrap font-medium">
+                  Sign in to track →
+                </span>
               )}
             </button>
           );

@@ -32,21 +32,24 @@ export default function RoutesPage() {
             <Reveal key={route.slug} delay={(i % 2) * 80}>
               <Link
                 href={`/routes/${route.slug}`}
-                className="card-press group block border border-ink/10 rounded-2xl p-5 bg-white hover:border-rust hover:shadow-card transition-all duration-300 h-full"
+                className="card-press group block border border-ink/10 rounded-2xl p-5 md:p-6 bg-white hover:border-rust hover:shadow-lift transition-all duration-300 h-full relative overflow-hidden"
               >
-                <div className="flex items-center justify-between mb-3">
-                  <span className="inline-block text-xs font-mono font-medium text-rust border-2 border-rust/40 rounded-full px-3 py-1 -rotate-2 tracking-wide uppercase">
-                    {route.popularity}
-                  </span>
-                  <span className="text-xs text-ink/50 font-medium">{route.days}</span>
+                <div className="absolute top-0 right-0 w-24 h-24 bg-jungle/5 rounded-full -translate-y-8 translate-x-8 group-hover:scale-150 transition-transform duration-500" />
+                <div className="relative">
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="inline-block text-xs font-mono font-medium text-rust border-2 border-rust/40 rounded-full px-3 py-1 -rotate-2 tracking-wide uppercase">
+                      {route.popularity}
+                    </span>
+                    <span className="text-xs text-ink/50 font-medium">{route.days}</span>
+                  </div>
+                  <p className="font-display font-bold text-xl md:text-2xl mb-1 group-hover:text-rust transition-colors">{route.name}</p>
+                  <p className="text-ink/60 text-sm mb-4">{route.tagline}</p>
+                  <p className="text-xs text-ink/50 flex items-center gap-1.5 flex-wrap">
+                    <span className="inline-block w-1.5 h-1.5 rounded-full bg-jungle" />
+                    {uniqueSlugs.length} stops · {previewDests.join(" → ")}
+                    {uniqueSlugs.length > 4 ? "..." : ""}
+                  </p>
                 </div>
-                <p className="font-display font-bold text-xl mb-1 group-hover:text-rust transition-colors">{route.name}</p>
-                <p className="text-ink/60 text-sm mb-3">{route.tagline}</p>
-                <p className="text-xs text-ink/50 flex items-center gap-1.5">
-                  <span className="inline-block w-1.5 h-1.5 rounded-full bg-jungle" />
-                  {uniqueSlugs.length} stops · {previewDests.join(" → ")}
-                  {uniqueSlugs.length > 4 ? "..." : ""}
-                </p>
               </Link>
             </Reveal>
           );

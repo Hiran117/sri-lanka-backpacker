@@ -27,23 +27,26 @@ export default function DestinationsIndexPage() {
           <Reveal key={dest.slug} delay={(i % 3) * 80}>
             <Link
               href={`/destinations/${dest.slug}`}
-              className="card-press group block border border-ink/10 rounded-2xl overflow-hidden bg-white hover:border-rust hover:shadow-card transition-all duration-300 h-full"
+              className="card-press group block border border-ink/10 rounded-2xl overflow-hidden bg-white hover:border-rust hover:shadow-lift transition-all duration-300 h-full"
             >
-              <div className="relative w-full h-44 overflow-hidden">
+              <div className="relative w-full h-48 overflow-hidden">
                 <Image
                   src={dest.image}
                   alt={dest.name}
                   fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-500"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="object-cover group-hover:scale-110 transition-transform duration-700"
                 />
-                <div className="absolute inset-0 bg-linear-to-t from-ink/40 to-transparent" />
-                <span className="absolute top-3 left-3 text-xs font-medium text-parchment bg-ink/40 backdrop-blur-sm rounded-full px-3 py-1">
-                  Stop {dest.order}
-                </span>
+                <div className="absolute inset-0 bg-linear-to-t from-ink/60 via-ink/10 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-4">
+                  <p className="font-display font-bold text-xl text-parchment drop-shadow-lg">{dest.name}</p>
+                </div>
               </div>
               <div className="p-5">
-                <p className="font-display font-bold text-xl mb-2 group-hover:text-rust transition-colors">{dest.name}</p>
                 <p className="text-ink/60 text-sm line-clamp-3">{dest.intro}</p>
+                <p className="text-sm text-jungle font-medium mt-3 flex items-center gap-1 group-hover:gap-2 transition-all">
+                  Explore →
+                </p>
               </div>
             </Link>
           </Reveal>

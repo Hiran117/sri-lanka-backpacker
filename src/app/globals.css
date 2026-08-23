@@ -129,6 +129,15 @@ body {
   animation: overlayIn 0.25s ease-out both;
 }
 
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); opacity: 1; }
+  50% { transform: translateY(6px); opacity: 0.5; }
+}
+
+.animate-bounce {
+  animation: bounce 1.5s ease-in-out infinite;
+}
+
 /* Stagger delays */
 .stagger-1 { animation-delay: 0.08s; }
 .stagger-2 { animation-delay: 0.16s; }

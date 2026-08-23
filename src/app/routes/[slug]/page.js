@@ -54,7 +54,7 @@ export default async function RoutePage({ params }) {
 
       {!signedIn ? (
         <Reveal>
-          <div className="bg-jungle/10 border border-jungle/30 rounded-2xl p-6 text-center">
+          <div className="bg-jungle/10 border border-jungle/30 rounded-2xl p-6 md:p-8 text-center">
             <p className="font-display font-bold text-lg text-jungle mb-2">
               {uniqueStopCount} stops on this route
             </p>
@@ -77,7 +77,7 @@ export default async function RoutePage({ params }) {
             </div>
             <Link
               href="/signup"
-              className="inline-block bg-jungle text-parchment px-6 py-3 rounded-lg text-sm font-semibold hover:bg-jungle/90 transition-colors"
+              className="inline-block bg-jungle text-parchment px-6 py-3 rounded-lg text-sm font-semibold hover:bg-jungle-light transition-colors"
             >
               Sign up free
             </Link>
@@ -93,16 +93,20 @@ export default async function RoutePage({ params }) {
                 href={`/destinations/${dest.slug}?route=${route.slug}`}
                 className="relative pl-16 group"
               >
-                <span className="absolute left-0 top-0 w-12 h-12 rounded-full overflow-hidden ring-4 ring-parchment">
-                  <Image src={dest.image} alt={dest.name} fill className="object-cover" />
+                <span className="absolute left-0 top-0 w-12 h-12 rounded-full overflow-hidden ring-4 ring-parchment z-10">
+                  <Image
+                    src={dest.image}
+                    alt={dest.name}
+                    fill
+                    sizes="48px"
+                    className="object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
                 </span>
-                <div className="relative border border-ink/15 rounded-lg p-4 bg-parchment group-hover:border-rust transition-colors overflow-hidden">
-                  <div className="absolute -left-2 top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-white border border-ink/15" />
-                  <div className="absolute -right-2 top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-white border border-ink/15" />
+                <div className="relative border border-ink/15 rounded-xl p-4 bg-white group-hover:border-rust group-hover:shadow-card transition-all duration-300 overflow-hidden">
                   <p className="text-xs text-rust font-mono font-medium uppercase tracking-wide">
                     {i === 0 ? "Start" : i === stops.length - 1 ? "End" : `Stop ${String(i).padStart(2, "0")}`}
                   </p>
-                  <p className="font-display font-bold text-lg">{dest.name}</p>
+                  <p className="font-display font-bold text-lg group-hover:text-rust transition-colors">{dest.name}</p>
                   <p className="text-ink/60 text-sm line-clamp-2">{dest.intro}</p>
                 </div>
               </Link>

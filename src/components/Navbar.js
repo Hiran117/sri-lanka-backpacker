@@ -22,13 +22,11 @@ export default function Navbar({ authSlot }) {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Lock body scroll when drawer is open
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
   }, [open]);
 
-  // Close drawer on route change
   useEffect(() => { setOpen(false); }, [pathname]);
 
   const isActive = (href) =>
@@ -38,8 +36,8 @@ export default function Navbar({ authSlot }) {
     <header
       className={`sticky top-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-parchment/90 backdrop-blur-md border-b border-ink/10 shadow-soft"
-          : "bg-parchment/95 backdrop-blur border-b border-ink/5"
+          ? "bg-parchment shadow-soft border-b border-ink/10"
+          : "bg-parchment border-b border-ink/10"
       }`}
     >
       <div className="max-w-6xl mx-auto px-4 flex items-center justify-between h-16">
@@ -73,7 +71,7 @@ export default function Navbar({ authSlot }) {
         <div className="hidden md:block">{authSlot}</div>
 
         <button
-          className="md:hidden relative w-10 h-10 flex flex-col gap-1.5 justify-center items-center"
+          className="md:hidden relative w-10 h-10 flex flex-col gap-1.5 justify-center items-center rounded-lg hover:bg-ink/5 transition-colors"
           onClick={() => setOpen(!open)}
           aria-label="Toggle menu"
           aria-expanded={open}
@@ -84,14 +82,13 @@ export default function Navbar({ authSlot }) {
         </button>
       </div>
 
-      {/* Mobile drawer overlay */}
       {open && (
         <>
           <div
-            className="md:hidden fixed inset-0 top-16 bg-ink/30 backdrop-blur-sm animate-overlay"
+            className="md:hidden fixed inset-0 top-16 bg-ink/40 backdrop-blur-sm animate-overlay"
             onClick={() => setOpen(false)}
           />
-          <nav className="md:hidden fixed top-16 right-0 bottom-0 w-72 max-w-[80vw] bg-parchment-light border-l border-ink/10 shadow-lift animate-slide-in flex flex-col px-5 py-6 gap-1">
+          <nav className="md:hidden fixed top-16 right-0 bottom-0 w-72 max-w-[80vw] bg-parchment-light border-l border-ink/10 shadow-lift animate-slide-in flex flex-col px-5 py-6 gap-1 overflow-y-auto">
             {links.map((l) => (
               <Link
                 key={l.href}

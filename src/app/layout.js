@@ -17,8 +17,7 @@ const body = Inter({
 
 export const metadata = {
   title: "Lanka Trail — Backpacker's Guide to Sri Lanka",
-  description:
-    "Public transport routes, costs, durations, hostels and food — plan your Sri Lanka backpacking trip stop by stop.",
+  description: "Public transport routes, costs, durations, hostels and food — plan your Sri Lanka backpacking trip stop by stop.",
 };
 
 export default function RootLayout({ children }) {

@@ -7,6 +7,7 @@ import PlaceChecklist from "@/components/PlaceChecklist";
 import ReviewSection from "@/components/ReviewSection";
 import { markVisited } from "./actions";
 import Image from "next/image";
+import GpsCheckin from "@/components/GpsCheckin";
 
 export function generateStaticParams() {
   return destinations.map((d) => ({ slug: d.slug }));
@@ -73,22 +74,9 @@ export default async function DestinationPage({ params }) {
       <h1 className="font-display font-bold text-3xl md:text-5xl mb-4">{dest.name}</h1>
       <p className="text-ink/70 text-lg mb-6">{dest.intro}</p>
 
-      {signedIn && (
-        <form
-          action={async () => {
-            "use server";
-            await markVisited(slug);
-          }}
-          className="mb-10"
-        >
-          <button
-            type="submit"
-            className="bg-terracotta text-cream px-4 py-2 rounded-lg text-sm font-medium hover:bg-terracotta/90"
-          >
-            📍 I'm here — mark as visited
-          </button>
-        </form>
-      )}
+{signedIn && (
+  <GpsCheckin destinationSlug={slug} destName={dest.name} coords={dest.coords} />
+)}
 
       <section className="mb-10">
         <h2 className="font-display font-bold text-xl mb-4">

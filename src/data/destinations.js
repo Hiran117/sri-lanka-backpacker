@@ -5,6 +5,7 @@ export const destinations = [
     order: 1,
     intro: "Sri Lanka's chaotic, humid capital — most backpackers pass through here first, either from the airport or the port.",
     image: "https://images.unsplash.com/photo-1591977879538-c1a625060c15?w=1200&q=80",
+    coords: { lat: 6.9271, lng: 79.8612 },
     howYouGotHere: {
       from: "Bandaranaike International Airport (CMB)",
       options: [
@@ -28,6 +29,7 @@ export const destinations = [
     name: "Kandy",
     order: 2,
     image: "https://images.unsplash.com/photo-1546708973-b339540b5162?w=1200&q=80",
+    coords: { lat: 7.2906, lng: 80.6337 },
     intro: "Cultural heart of Sri Lanka, hill-country gateway, and the start of the famous train ride to Ella.",
     howYouGotHere: {
       from: "Colombo",
@@ -51,6 +53,7 @@ export const destinations = [
     name: "Ella",
     order: 3,
     image: "https://images.unsplash.com/photo-1586183189334-1e39d5b5cf5e?w=1200&q=80",
+    coords: { lat: 6.8667, lng: 81.0466 },
     intro: "The postcard hill-country town — famous for the Nine Arch Bridge and the train ride to get here.",
     howYouGotHere: {
       from: "Kandy",
@@ -74,6 +77,7 @@ export const destinations = [
     name: "Mirissa",
     order: 4,
     image: "https://images.unsplash.com/photo-1586813070208-3f95d5c9d963?w=1200&q=80",
+    coords: { lat: 5.9483, lng: 80.4589 },
     intro: "Laid-back beach town on the south coast — whale watching, surf, and hammocks.",
     howYouGotHere: {
       from: "Ella",
@@ -96,6 +100,7 @@ export const destinations = [
     name: "Galle",
     order: 5,
     image: "https://images.unsplash.com/photo-1560087637-bf797bc7796a?w=1200&q=80",
+    coords: { lat: 6.0535, lng: 80.2210 },
     intro: "Historic Dutch fort town — the last stop before heading back to Colombo.",
     howYouGotHere: {
       from: "Mirissa",

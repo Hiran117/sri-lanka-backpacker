@@ -5,7 +5,15 @@ export const routes = [
     tagline: "Hill country to south coast — the most-traveled backpacker route",
     popularity: "Most popular",
     days: "7-10 days",
-    destinationSlugs: ["colombo", "kandy", "ella", "nuwara-eliya", "mirissa", "galle", "colombo"],
+    destinationSlugs: ["colombo", "kandy", "ella", "nuwara-eliya", "mirissa", "weligama", "galle", "unawatuna", "colombo"],
+  },
+  {
+    slug: "south-coast-surf-safari",
+    name: "South Coast Surf & Safari",
+    tagline: "Beaches, surf towns, and Yala's leopards — best for a shorter, beach-focused trip",
+    popularity: "Rising favorite",
+    days: "6-9 days",
+    destinationSlugs: ["colombo", "hikkaduwa", "galle", "unawatuna", "weligama", "mirissa", "yala", "colombo"],
   },
   {
     slug: "cultural-triangle",
@@ -31,7 +39,8 @@ export const routes = [
     days: "18-21 days",
     destinationSlugs: [
       "colombo", "sigiriya", "dambulla", "polonnaruwa", "anuradhapura",
-      "kandy", "ella", "nuwara-eliya", "udawalawe", "mirissa", "galle",
+      "kandy", "ella", "nuwara-eliya", "udawalawe", "yala", "mirissa",
+      "weligama", "galle", "unawatuna", "hikkaduwa",
       "arugam-bay", "trincomalee", "jaffna", "colombo",
     ],
   },

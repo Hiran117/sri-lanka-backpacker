@@ -29,10 +29,10 @@ export default function RoutesPage() {
             <Link
               key={route.slug}
               href={`/routes/${route.slug}`}
-              className="group border border-ink/10 rounded-2xl p-5 bg-white hover:border-terracotta hover:shadow-md transition-all"
+              className="group border border-ink/10 rounded-2xl p-5 bg-white hover:border-rust hover:shadow-md transition-all"
             >
               <div className="flex items-center justify-between mb-2">
-                <span className="text-xs font-semibold text-terracotta bg-terracotta/10 px-2.5 py-1 rounded-full">
+<span className="inline-block text-xs font-mono font-medium text-rust border-2 border-rust/40 rounded-full px-3 py-1 -rotate-2 tracking-wide uppercase">
                   {route.popularity}
                 </span>
                 <span className="text-xs text-ink/50">{route.days}</span>

@@ -81,7 +81,7 @@ export default async function DestinationPage({ params, searchParams }) {
         <Image src={dest.image} alt={dest.name} fill className="object-cover" priority />
         <div className="absolute inset-0 bg-linear-to-t from-ink/70 to-transparent" />
         <div className="absolute bottom-0 left-0 right-0 max-w-3xl mx-auto px-4 pb-6">
-          <h1 className="font-display font-bold text-3xl md:text-5xl text-cream">{dest.name}</h1>
+          <h1 className="font-display font-bold text-3xl md:text-5xl text-parchment">{dest.name}</h1>
         </div>
       </div>
 
@@ -89,7 +89,7 @@ export default async function DestinationPage({ params, searchParams }) {
         {route && (
           <Link
             href={`/routes/${route.slug}`}
-            className="text-sm text-tea hover:underline mb-4 inline-block"
+            className="text-sm text-jungle hover:underline mb-4 inline-block"
           >
             ← Back to {route.name}
           </Link>
@@ -98,11 +98,11 @@ export default async function DestinationPage({ params, searchParams }) {
         <p className="text-ink/70 text-lg mb-8">{dest.intro}</p>
 
         {!signedIn && (
-          <div className="bg-tea/10 border border-tea/30 rounded-2xl p-5 mb-10 text-center">
-            <p className="font-medium text-tea mb-1">
+          <div className="bg-jungle/10 border border-jungle/30 rounded-2xl p-5 mb-10 text-center">
+            <p className="font-medium text-jungle mb-1">
               Sign up free to track your progress and check in with GPS
             </p>
-            <Link href="/signup" className="text-sm text-tea font-semibold hover:underline">
+            <Link href="/signup" className="text-sm text-jungle font-semibold hover:underline">
               Create a free account →
             </Link>
           </div>
@@ -119,7 +119,7 @@ export default async function DestinationPage({ params, searchParams }) {
                 className="border border-ink/10 rounded-xl p-4 flex flex-col sm:flex-row sm:justify-between gap-1 bg-white"
               >
                 <span className="font-medium">{opt.mode}</span>
-                <span className="text-ink/60 text-sm">
+<span className="text-ink/60 text-sm font-mono">
                   {opt.cost} · {opt.duration}
                 </span>
               </div>
@@ -164,9 +164,9 @@ export default async function DestinationPage({ params, searchParams }) {
         {nextDest && (
           <Link
             href={`/destinations/${nextDest.slug}?route=${routeSlug}`}
-            className="block mb-10 border border-terracotta rounded-xl p-4 bg-terracotta/5 hover:bg-terracotta/10 transition-colors"
+            className="block mb-10 border border-rust rounded-xl p-4 bg-rust/5 hover:bg-rust/10 transition-colors"
           >
-            <p className="text-xs text-terracotta font-medium mb-1">Next stop</p>
+            <p className="text-xs text-rust font-medium mb-1">Next stop</p>
             <p className="font-display font-semibold text-lg">{nextDest.name} →</p>
           </Link>
         )}

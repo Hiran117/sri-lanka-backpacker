@@ -13,21 +13,21 @@ export default function Navbar({ authSlot }) {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 bg-cream/95 backdrop-blur border-b border-ink/10">
+    <header className="sticky top-0 z-50 bg-parchment/95 backdrop-blur border-b border-ink/10">
       <div className="max-w-6xl mx-auto px-4 flex items-center justify-between h-16">
-        <Link href="/" className="flex items-center gap-1.5 font-display font-bold text-xl text-tea">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" className="text-terracotta">
+        <Link href="/" className="flex items-center gap-1.5 font-display font-bold text-xl text-jungle">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" className="text-rust">
           <path
             d="M12 2C7.58 2 4 5.58 4 10c0 5.25 7.05 11.25 7.35 11.5a1 1 0 0 0 1.3 0C12.95 21.25 20 15.25 20 10c0-4.42-3.58-8-8-8zm0 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"
             fill="currentColor"
           />
           </svg>
-            Lanka<span className="text-terracotta">Trail</span>
+            Lanka<span className="text-rust">Trail</span>
         </Link>
 
         <nav className="hidden md:flex gap-8 font-medium">
           {links.map((l) => (
-            <Link key={l.href} href={l.href} className="text-ink/80 hover:text-tea transition-colors">
+            <Link key={l.href} href={l.href} className="text-ink/80 hover:text-jungle transition-colors">
               {l.label}
             </Link>
           ))}
@@ -50,7 +50,7 @@ export default function Navbar({ authSlot }) {
       {open && (
         <nav className="md:hidden flex flex-col px-4 pb-4 gap-2 font-medium">
           {links.map((l) => (
-            <Link key={l.href} href={l.href} className="py-2 text-ink/80 hover:text-tea" onClick={() => setOpen(false)}>
+            <Link key={l.href} href={l.href} className="py-2 text-ink/80 hover:text-jungle" onClick={() => setOpen(false)}>
               {l.label}
             </Link>
           ))}

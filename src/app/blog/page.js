@@ -19,7 +19,7 @@ export default function BlogIndexPage() {
           <Link
             key={post.slug}
             href={`/blog/${post.slug}`}
-            className="border border-ink/10 rounded-2xl p-5 bg-white hover:border-terracotta transition-colors"
+            className="border border-ink/10 rounded-2xl p-5 bg-white hover:border-rust transition-colors"
           >
             <p className="text-xs text-ink/50 mb-1">{post.date}</p>
             <p className="font-display font-bold text-xl mb-2">{post.title}</p>

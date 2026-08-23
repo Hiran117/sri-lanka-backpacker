@@ -30,7 +30,7 @@ export default function ReviewSection({ destinationSlug, reviews, signedIn }) {
           <button
             type="submit"
             disabled={isPending}
-            className="self-start bg-tea text-cream px-4 py-2 rounded-lg text-sm font-medium hover:bg-tea/90 disabled:opacity-50"
+            className="self-start bg-jungle text-parchment px-4 py-2 rounded-lg text-sm font-medium hover:bg-jungle/90 disabled:opacity-50"
           >
             {isPending ? "Posting..." : "Post review"}
           </button>

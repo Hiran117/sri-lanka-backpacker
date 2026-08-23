@@ -17,6 +17,10 @@ const queries = {
   jaffna: "Jaffna Sri Lanka",
   udawalawe: "Udawalawe elephant safari",
   negombo: "Negombo beach Sri Lanka",
+  weligama: "Weligama surf Sri Lanka",
+  unawatuna: "Unawatuna beach Sri Lanka",
+  hikkaduwa: "Hikkaduwa beach Sri Lanka",
+  yala: "Yala National Park leopard safari",
 };
 
 async function run() {

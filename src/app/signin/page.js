@@ -49,11 +49,11 @@ export default function SigninPage() {
           onChange={(e) => setForm({ ...form, password: e.target.value })}
           className="border border-ink/10 rounded-lg p-3 text-sm"
         />
-        {error && <p className="text-terracotta text-sm">{error}</p>}
+        {error && <p className="text-rust text-sm">{error}</p>}
         <button
           type="submit"
           disabled={loading}
-          className="bg-tea text-cream rounded-lg p-3 text-sm font-medium hover:bg-tea/90 disabled:opacity-50"
+          className="bg-jungle text-parchment rounded-lg p-3 text-sm font-medium hover:bg-jungle/90 disabled:opacity-50"
         >
           {loading ? "Signing in..." : "Sign in"}
         </button>
@@ -68,7 +68,7 @@ export default function SigninPage() {
 
       <p className="text-sm text-ink/60 mt-4 text-center">
         No account?{" "}
-        <Link href="/signup" className="text-tea hover:underline">
+        <Link href="/signup" className="text-jungle hover:underline">
           Sign up
         </Link>
       </p>

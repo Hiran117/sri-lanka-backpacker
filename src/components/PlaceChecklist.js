@@ -28,11 +28,11 @@ export default function PlaceChecklist({ destinationSlug, places, initialChecked
         <div className="mb-4">
           <div className="flex justify-between text-sm mb-1">
             <span className="text-ink/60">Progress</span>
-            <span className="font-medium text-tea">{progress}%</span>
+            <span className="font-medium text-jungle">{progress}%</span>
           </div>
           <div className="h-2 bg-ink/10 rounded-full overflow-hidden">
             <div
-              className="h-full bg-tea transition-all duration-300"
+              className="h-full bg-jungle transition-all duration-300"
               style={{ width: `${progress}%` }}
             />
           </div>
@@ -48,8 +48,8 @@ export default function PlaceChecklist({ destinationSlug, places, initialChecked
               onClick={() => toggle(place.name)}
               className={`text-left border rounded-xl p-4 flex justify-between items-center gap-2 transition-colors ${
                 isChecked
-                  ? "border-tea bg-tea/10"
-                  : "border-ink/10 bg-white hover:border-terracotta"
+                  ? "border-jungle bg-jungle/10"
+                  : "border-ink/10 bg-white hover:border-rust"
               }`}
             >
               <div>
@@ -60,7 +60,7 @@ export default function PlaceChecklist({ destinationSlug, places, initialChecked
                 <p className="text-ink/60 text-sm">{place.note}</p>
               </div>
               {!signedIn && (
-                <span className="text-xs text-tea whitespace-nowrap font-medium">
+                <span className="text-xs text-jungle whitespace-nowrap font-medium">
                   Sign in to track →
                 </span>
               )}

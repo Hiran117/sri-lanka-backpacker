@@ -12,7 +12,7 @@ export default async function AuthButton() {
           await signOut();
         }}
       >
-        <button className="text-sm font-medium text-terracotta hover:underline">
+        <button className="text-sm font-medium text-rust hover:underline">
           Sign out
         </button>
       </form>
@@ -20,7 +20,7 @@ export default async function AuthButton() {
   }
 
   return (
-    <Link href="/signin" className="text-sm font-medium text-tea hover:underline">
+    <Link href="/signin" className="text-sm font-medium text-jungle hover:underline">
       Sign in
     </Link>
   );

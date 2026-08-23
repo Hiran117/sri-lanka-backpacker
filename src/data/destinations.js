@@ -340,6 +340,96 @@ export const destinations = [
     eat: { note: "Good seafood, decent range of both local and Western options given the airport proximity" },
     coords: { lat: 7.2083, lng: 79.8358 },
   },
+  {
+    slug: "weligama",
+    name: "Weligama",
+    image: "https://images.pexels.com/photos/35456333/pexels-photo-35456333.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    intro: "The easiest place in Sri Lanka to learn to surf — long, gentle beach breaks, a growing digital-nomad scene, and a short ride from Mirissa.",
+    coords: { lat: 5.9737, lng: 80.4297 },
+    howYouGotHere: {
+      from: "Mirissa",
+      options: [
+        { mode: "Tuk-tuk", cost: "LKR 400–700", duration: "~15 min" },
+        { mode: "Train (coastal line)", cost: "LKR 50–150", duration: "~15 min" },
+        { mode: "Local bus", cost: "LKR 50–100", duration: "~20 min" },
+      ],
+    },
+    exploreHere: [
+      { name: "Weligama Bay surf lessons", note: "Best beginner break in the country, boards/lessons on every corner" },
+      { name: "Taprobane Island", note: "Iconic tiny private island just offshore, great photo spot" },
+      { name: "Stilt fishermen viewpoint", note: "Early morning or sunset, small tip expected for photos" },
+      { name: "Coco Bar Weligama", note: "Popular backpacker sunset spot on the beach" },
+      { name: "Snake Farm Weligama", note: "Quick roadside stop if curious" },
+    ],
+    stay: { area: "Beach road near the bay", priceRange: "LKR 1,800–4,000/night hostel dorm" },
+    eat: { note: "Strong digital-nomad cafe scene — smoothie bowls, good coffee, Western-friendly menus" },
+  },
+  {
+    slug: "unawatuna",
+    name: "Unawatuna",
+    image: "https://images.pexels.com/photos/12061249/pexels-photo-12061249.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    intro: "A curved, palm-lined bay just past Galle — lively without being overrun, and an easy add-on to a Galle stop.",
+    coords: { lat: 6.0108, lng: 80.2492 },
+    howYouGotHere: {
+      from: "Galle",
+      options: [
+        { mode: "Tuk-tuk", cost: "LKR 500–800", duration: "~10–15 min" },
+        { mode: "Local bus", cost: "LKR 50–100", duration: "~20 min" },
+      ],
+    },
+    exploreHere: [
+      { name: "Unawatuna Beach", note: "Calm, swimmable bay — one of the safer swimming beaches on the south coast" },
+      { name: "Japanese Peace Pagoda", note: "Short hike up, good sunset/sunrise views over the bay" },
+      { name: "Rumassala hike", note: "Jungle-covered headland, short forest walk" },
+      { name: "Jungle Beach (short version)", note: "Quieter cove nearby, walkable" },
+      { name: "Devata Rock viewpoint", note: "Small climb, good photo spot over the bay" },
+    ],
+    stay: { area: "Main beach strip", priceRange: "LKR 2,000–4,000/night hostel dorm" },
+    eat: { note: "Beachfront seafood and cocktail bars, lively evenings" },
+  },
+  {
+    slug: "hikkaduwa",
+    name: "Hikkaduwa",
+    image: "https://images.pexels.com/photos/12548554/pexels-photo-12548554.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    intro: "The first proper beach town south of Colombo — coral reef snorkeling, turtles, and a solid budget-backpacker scene.",
+    coords: { lat: 6.1391, lng: 80.1013 },
+    howYouGotHere: {
+      from: "Colombo",
+      options: [
+        { mode: "Train (coastal line)", cost: "LKR 100–250", duration: "~2–2.5 hrs" },
+        { mode: "Bus", cost: "LKR 150–250", duration: "~2.5 hrs" },
+      ],
+    },
+    exploreHere: [
+      { name: "Hikkaduwa Coral Sanctuary", note: "Snorkeling right off the beach, rent gear on the sand" },
+      { name: "Turtle hatchery", note: "See rescued turtles, small entry fee supports conservation" },
+      { name: "Hikkaduwa Beach", note: "Main strip, runs parallel to the highway, easy access" },
+      { name: "Surfing at Hikkaduwa Point", note: "Reef break, better for intermediate surfers than Weligama" },
+    ],
+    stay: { area: "Beach road", priceRange: "LKR 1,500–3,500/night hostel dorm" },
+    eat: { note: "Budget-friendly seafood shacks and backpacker cafes along the main strip" },
+  },
+  {
+    slug: "yala",
+    name: "Yala National Park",
+    image: "https://images.pexels.com/photos/13784932/pexels-photo-13784932.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    intro: "Sri Lanka's most famous safari park — the best odds in the world of spotting a wild leopard, plus elephants, crocodiles, and huge bird life.",
+    coords: { lat: 6.3725, lng: 81.5185 },
+    howYouGotHere: {
+      from: "Mirissa",
+      options: [
+        { mode: "Private car/van (shared)", cost: "LKR 5,000–8,000 shared", duration: "~2.5–3 hrs" },
+        { mode: "Bus (change at Tissamaharama)", cost: "LKR 400–600", duration: "~4 hrs" },
+      ],
+    },
+    exploreHere: [
+      { name: "Yala Block 1 safari jeep tour", note: "Book the evening before, early morning drives have the best sightings" },
+      { name: "Tissamaharama town", note: "Common base for arranging safaris, quieter than staying inside the park area" },
+      { name: "Kataragama Temple", note: "Short trip out, major multi-religious pilgrimage site" },
+    ],
+    stay: { area: "Tissamaharama or Palatupana", priceRange: "LKR 2,500–5,000/night hostel dorm" },
+    eat: { note: "Mostly guesthouse meals, limited independent cafe scene near the park" },
+  },
 ];
 
 export function getDestination(slug) {

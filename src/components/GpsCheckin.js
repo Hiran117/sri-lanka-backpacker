@@ -48,7 +48,7 @@ export default function GpsCheckin({ destinationSlug, destName, coords }) {
       <button
         onClick={handleCheckin}
         disabled={status === "checking" || status === "success"}
-        className="bg-terracotta text-cream px-4 py-2 rounded-lg text-sm font-medium hover:bg-terracotta/90 disabled:opacity-60"
+        className="bg-rust text-parchment px-4 py-2 rounded-lg text-sm font-medium hover:bg-rust/90 disabled:opacity-60"
       >
         {status === "checking" && "Checking location..."}
         {status === "success" && `✓ Checked in at ${destName}`}
@@ -57,7 +57,7 @@ export default function GpsCheckin({ destinationSlug, destName, coords }) {
       </button>
 
       {status === "far" && (
-        <p className="text-sm text-terracotta mt-2">
+        <p className="text-sm text-rust mt-2">
           You don't seem to be near {destName} yet — check in once you arrive.
         </p>
       )}

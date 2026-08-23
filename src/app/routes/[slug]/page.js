@@ -35,12 +35,12 @@ export default async function RoutePage({ params }) {
 
   return (
     <div className="max-w-3xl mx-auto px-4 py-12">
-      <Link href="/" className="text-sm text-tea hover:underline mb-4 inline-block">
+      <Link href="/" className="text-sm text-jungle hover:underline mb-4 inline-block">
         ← All routes
       </Link>
 
       <div className="flex items-center gap-2 mb-3">
-        <span className="text-xs font-semibold text-terracotta bg-terracotta/10 px-2.5 py-1 rounded-full">
+        <span className="text-xs font-semibold text-rust bg-rust/10 px-2.5 py-1 rounded-full">
           {route.popularity}
         </span>
         <span className="text-xs text-ink/50">{route.days}</span>
@@ -50,8 +50,8 @@ export default async function RoutePage({ params }) {
       <p className="text-ink/70 text-lg mb-10">{route.tagline}</p>
 
       {!signedIn ? (
-        <div className="bg-tea/10 border border-tea/30 rounded-2xl p-6 text-center">
-          <p className="font-display font-bold text-lg text-tea mb-2">
+        <div className="bg-jungle/10 border border-jungle/30 rounded-2xl p-6 text-center">
+          <p className="font-display font-bold text-lg text-jungle mb-2">
             {uniqueStopCount} stops on this route
           </p>
           <p className="text-ink/70 text-sm mb-5">
@@ -73,14 +73,14 @@ export default async function RoutePage({ params }) {
           </div>
           <Link
             href="/signup"
-            className="inline-block bg-tea text-cream px-6 py-3 rounded-lg text-sm font-semibold hover:bg-tea/90"
+            className="inline-block bg-jungle text-parchment px-6 py-3 rounded-lg text-sm font-semibold hover:bg-jungle/90"
           >
             Sign up free
           </Link>
         </div>
       ) : (
         <div className="relative">
-          <div className="absolute left-6 top-2 bottom-2 w-0.5 bg-tea/20" />
+          <div className="absolute left-6 top-2 bottom-2 w-0.5 bg-jungle/20" />
           <div className="flex flex-col gap-6">
             {stops.map((dest, i) => (
               <Link
@@ -88,16 +88,18 @@ export default async function RoutePage({ params }) {
                 href={`/destinations/${dest.slug}?route=${route.slug}`}
                 className="relative pl-16 group"
               >
-                <span className="absolute left-0 top-0 w-12 h-12 rounded-full overflow-hidden ring-4 ring-cream">
+                <span className="absolute left-0 top-0 w-12 h-12 rounded-full overflow-hidden ring-4 ring-parchment">
                   <Image src={dest.image} alt={dest.name} fill className="object-cover" />
                 </span>
-                <div className="border border-ink/10 rounded-xl p-4 bg-white group-hover:border-terracotta transition-colors">
-                  <p className="text-xs text-terracotta font-medium">
-                    {i === 0 ? "Start" : i === stops.length - 1 ? "End" : `Stop ${i}`}
-                  </p>
-                  <p className="font-display font-semibold text-lg">{dest.name}</p>
-                  <p className="text-ink/60 text-sm line-clamp-2">{dest.intro}</p>
-                </div>
+                <div className="relative border border-ink/15 rounded-lg p-4 bg-parchment group-hover:border-rust transition-colors overflow-hidden">
+  <div className="absolute -left-2 top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-white border border-ink/15" />
+  <div className="absolute -right-2 top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-white border border-ink/15" />
+  <p className="text-xs text-rust font-mono font-medium uppercase tracking-wide">
+    {i === 0 ? "Start" : i === stops.length - 1 ? "End" : `Stop ${String(i).padStart(2, "0")}`}
+  </p>
+  <p className="font-display font-bold text-lg">{dest.name}</p>
+  <p className="text-ink/60 text-sm line-clamp-2">{dest.intro}</p>
+</div>
               </Link>
             ))}
           </div>

@@ -26,13 +26,13 @@ export default function StartSelector() {
         <div className="grid sm:grid-cols-2 gap-3">
           <button
             onClick={() => setMode("routes")}
-            className="rounded-xl bg-tea text-cream py-3 px-4 font-medium hover:bg-tea/90 transition-colors"
+            className="rounded-xl bg-jungle text-parchment py-3 px-4 font-medium hover:bg-jungle/90 transition-colors"
           >
             Just landed — pick a route
           </button>
           <button
             onClick={() => setMode("select")}
-            className="rounded-xl border border-tea text-tea py-3 px-4 font-medium hover:bg-tea/10 transition-colors"
+            className="rounded-xl border border-jungle text-jungle py-3 px-4 font-medium hover:bg-jungle/10 transition-colors"
           >
             I'm already at a place
           </button>
@@ -45,10 +45,10 @@ export default function StartSelector() {
             <button
               key={route.slug}
               onClick={() => router.push(`/routes/${route.slug}`)}
-              className="text-left rounded-xl border border-ink/10 p-4 hover:border-terracotta transition-colors bg-white"
+              className="text-left rounded-xl border border-ink/10 p-4 hover:border-rust transition-colors bg-white"
             >
               <div className="flex items-center justify-between mb-1">
-                <span className="text-xs font-semibold text-terracotta bg-terracotta/10 px-2.5 py-1 rounded-full">
+<span className="inline-block text-xs font-mono font-medium text-rust border-2 border-rust/40 rounded-full px-3 py-1 -rotate-2 tracking-wide uppercase">
                   {route.popularity}
                 </span>
                 <span className="text-xs text-ink/50">{route.days}</span>
@@ -72,7 +72,7 @@ export default function StartSelector() {
             <button
               key={d.slug}
               onClick={() => router.push(`/destinations/${d.slug}`)}
-              className="text-left rounded-lg border border-ink/10 py-2.5 px-4 hover:border-terracotta hover:text-terracotta transition-colors"
+              className="text-left rounded-lg border border-ink/10 py-2.5 px-4 hover:border-rust hover:text-rust transition-colors"
             >
               {d.name}
             </button>

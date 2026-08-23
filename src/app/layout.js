@@ -1,18 +1,24 @@
-import { Poppins, Inter } from "next/font/google";
+import { Space_Grotesk, Inter, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AuthButton from "@/components/AuthButton";
 
-const display = Poppins({
+const display = Space_Grotesk({
   subsets: ["latin"],
-  weight: ["600", "700"],
+  weight: ["500", "600", "700"],
   variable: "--font-display",
 });
 
 const body = Inter({
   subsets: ["latin"],
   variable: "--font-body",
+});
+
+const mono = IBM_Plex_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  variable: "--font-mono",
 });
 
 export const metadata = {
@@ -22,8 +28,8 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={`${display.variable} ${body.variable} font-body bg-cream text-ink`}>
+    <html lang="en" data-scroll-behavior="smooth">
+      <body className={`${display.variable} ${body.variable} ${mono.variable} font-body bg-parchment text-ink`}>
         <Navbar authSlot={<AuthButton />} />
         <main className="min-h-screen">{children}</main>
         <Footer />

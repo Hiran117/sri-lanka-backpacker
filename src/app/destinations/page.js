@@ -24,7 +24,7 @@ export default function DestinationsIndexPage() {
           <Link
             key={dest.slug}
             href={`/destinations/${dest.slug}`}
-            className="group border border-ink/10 rounded-2xl overflow-hidden bg-white hover:border-terracotta hover:shadow-md transition-all"
+            className="group border border-ink/10 rounded-2xl overflow-hidden bg-white hover:border-rust hover:shadow-md transition-all"
           >
             <div className="relative w-full h-40">
               <Image
@@ -35,7 +35,7 @@ export default function DestinationsIndexPage() {
               />
             </div>
             <div className="p-5">
-              <span className="text-xs font-medium text-terracotta">Stop {dest.order}</span>
+              <span className="text-xs font-medium text-rust">Stop {dest.order}</span>
               <p className="font-display font-bold text-xl mt-1 mb-2">{dest.name}</p>
               <p className="text-ink/60 text-sm line-clamp-3">{dest.intro}</p>
             </div>

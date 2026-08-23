@@ -9,6 +9,7 @@ import PlaceChecklist from "@/components/PlaceChecklist";
 import ReviewSection from "@/components/ReviewSection";
 import GpsCheckin from "@/components/GpsCheckin";
 import Reveal from "@/components/Reveal";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 export function generateStaticParams() {
   return destinations.map((d) => ({ slug: d.slug }));
@@ -122,6 +123,15 @@ export default async function DestinationPage({ params, searchParams }) {
       </div>
 
       <div className="max-w-3xl mx-auto px-4 py-10">
+        <Breadcrumbs
+          className="mb-4"
+          items={[
+            { name: "Home", href: "/" },
+            { name: "Destinations", href: "/destinations" },
+            ...(route ? [{ name: route.name, href: `/routes/${route.slug}` }] : []),
+            { name: dest.name },
+          ]}
+        />
         <p className="text-ink/70 text-lg mb-8">{dest.intro}</p>
         {dest.lastUpdated && (
   <p className="text-xs text-ink/40 font-mono -mt-6 mb-8">

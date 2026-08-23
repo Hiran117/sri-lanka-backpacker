@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import Reveal from "@/components/Reveal";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 export function generateStaticParams() {
   return routes.map((r) => ({ slug: r.slug }));
@@ -57,7 +58,15 @@ export default async function RoutePage({ params }) {
       />
 
       <Reveal>
-        <Link href="/" className="text-sm text-jungle hover:underline mb-4 inline-block">
+        <Breadcrumbs
+          className="mb-4"
+          items={[
+            { name: "Home", href: "/" },
+            { name: "Routes", href: "/routes" },
+            { name: route.name },
+          ]}
+        />
+        <Link href="/routes" className="text-sm text-jungle hover:underline mb-4 inline-block">
           ← All routes
         </Link>
 

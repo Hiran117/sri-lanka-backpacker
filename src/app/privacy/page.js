@@ -32,7 +32,7 @@ export default function PrivacyPage() {
           We use Google AdSense to show ads on this site. Google and its partners may use cookies to serve ads
           based on your prior visits to this or other websites. You can opt out of personalized advertising by
           visiting{" "}
-          <a href="https://adssettings.google.com" className="text-tea hover:underline" target="_blank" rel="noopener noreferrer">
+          <a href="https://adssettings.google.com" className="text-jungle hover:underline" target="_blank" rel="noopener noreferrer">
             Google Ads Settings
           </a>.
         </p>

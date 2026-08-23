@@ -2,6 +2,7 @@ import { posts, getPost } from "@/data/posts";
 import { destinations } from "@/data/destinations";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 export function generateStaticParams() {
   return posts.map((p) => ({ slug: p.slug }));
@@ -93,6 +94,14 @@ export default async function BlogPostPage({ params }) {
         }}
       />
 
+      <Breadcrumbs
+        className="mb-4"
+        items={[
+          { name: "Home", href: "/" },
+          { name: "Guides", href: "/blog" },
+          { name: post.title },
+        ]}
+      />
       <p className="text-xs text-ink/50 mb-2 font-mono">{post.date}</p>
       <h1 className="font-display font-bold text-3xl md:text-4xl mb-8 leading-tight">{post.title}</h1>
       <div className="prose prose-ink max-w-none text-ink/80 leading-relaxed text-[17px]">

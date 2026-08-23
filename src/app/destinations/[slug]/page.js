@@ -77,6 +77,26 @@ export default async function DestinationPage({ params, searchParams }) {
 
   return (
     <div>
+       <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "TouristDestination",
+            name: dest.name,
+            description: dest.intro,
+            image: dest.image,
+            ...(dest.coords && {
+              geo: {
+                "@type": "GeoCoordinates",
+                latitude: dest.coords.lat,
+                longitude: dest.coords.lng,
+              },
+            }),
+          }),
+        }}
+      />
+      
       {/* Hero */}
       <div className="relative w-full h-72 md:h-96">
         <Image

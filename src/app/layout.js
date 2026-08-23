@@ -22,8 +22,26 @@ const mono = IBM_Plex_Mono({
 });
 
 export const metadata = {
-  title: "Lanka Trail — Backpacker's Guide to Sri Lanka",
+  title: {
+    default: "LankaTrail — Backpacker's Guide to Sri Lanka",
+    template: "%s | LankaTrail",
+  },
   description: "Public transport routes, costs, durations, hostels and food — plan your Sri Lanka backpacking trip stop by stop.",
+  openGraph: {
+    title: "LankaTrail — Backpacker's Guide to Sri Lanka",
+    description: "Real transport routes, costs, and trip planning for backpackers in Sri Lanka.",
+    url: "https://sri-lanka-backpacker.vercel.app",
+    siteName: "LankaTrail",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "LankaTrail — Backpacker's Guide to Sri Lanka",
+    description: "Real transport routes, costs, and trip planning for backpackers in Sri Lanka.",
+  },
+  verification: {
+    google: "9geXQzGwthT2ddrsuDgld_UkbwIKNbTFy93oZQweBwA",
+  },
 };
 
 export default function RootLayout({ children }) {

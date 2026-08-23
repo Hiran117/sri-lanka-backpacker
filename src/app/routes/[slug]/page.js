@@ -4,6 +4,7 @@ import { auth } from "@/auth";
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
+import Reveal from "@/components/Reveal";
 
 export function generateStaticParams() {
   return routes.map((r) => ({ slug: r.slug }));
@@ -35,49 +36,52 @@ export default async function RoutePage({ params }) {
 
   return (
     <div className="max-w-3xl mx-auto px-4 py-12">
-      <Link href="/" className="text-sm text-jungle hover:underline mb-4 inline-block">
-        ← All routes
-      </Link>
+      <Reveal>
+        <Link href="/" className="text-sm text-jungle hover:underline mb-4 inline-block">
+          ← All routes
+        </Link>
 
-      <div className="flex items-center gap-2 mb-3">
-        <span className="text-xs font-semibold text-rust bg-rust/10 px-2.5 py-1 rounded-full">
-          {route.popularity}
-        </span>
-        <span className="text-xs text-ink/50">{route.days}</span>
-      </div>
+        <div className="flex items-center gap-2 mb-3">
+          <span className="text-xs font-semibold text-rust bg-rust/10 px-2.5 py-1 rounded-full">
+            {route.popularity}
+          </span>
+          <span className="text-xs text-ink/50">{route.days}</span>
+        </div>
 
-      <h1 className="font-display font-bold text-3xl md:text-5xl mb-3">{route.name}</h1>
-      <p className="text-ink/70 text-lg mb-10">{route.tagline}</p>
+        <h1 className="font-display font-bold text-3xl md:text-5xl mb-3">{route.name}</h1>
+        <p className="text-ink/70 text-lg mb-10">{route.tagline}</p>
+      </Reveal>
 
       {!signedIn ? (
-        <div className="bg-jungle/10 border border-jungle/30 rounded-2xl p-6 text-center">
-          <p className="font-display font-bold text-lg text-jungle mb-2">
-            {uniqueStopCount} stops on this route
-          </p>
-          <p className="text-ink/70 text-sm mb-5">
-            Sign up free to see the full day-by-day breakdown, track your progress,
-            and check in with GPS as you travel this route.
-          </p>
-          <div className="flex flex-wrap justify-center gap-2 mb-5">
-            {[...new Set(route.destinationSlugs)].map((slug) => {
-              const d = getDestination(slug);
-              return d ? (
-                <span
-                  key={slug}
-                  className="text-xs bg-white border border-ink/10 rounded-full px-3 py-1.5"
-                >
-                  {d.name}
-                </span>
-              ) : null;
-            })}
+        <Reveal>
+          <div className="bg-jungle/10 border border-jungle/30 rounded-2xl p-6 text-center">
+            <p className="font-display font-bold text-lg text-jungle mb-2">
+              {uniqueStopCount} stops on this route
+            </p>
+            <p className="text-ink/70 text-sm mb-5">
+              Sign up free to see the full day-by-day breakdown, track your progress,
+              and check in with GPS as you travel this route.
+            </p>
+            <div className="flex flex-wrap justify-center gap-2 mb-5">
+              {[...new Set(route.destinationSlugs)].map((slug) => {
+                const d = getDestination(slug);
+                return d ? (
+                  <span
+                    key={slug}
+                    className="text-xs bg-white border border-ink/10 rounded-full px-3 py-1.5"
+                  >
+                    {d.name}
+                  </span>
+                ) : null;
+              })}
+            </div>
+            <Link
+              href="/signup"
+              className="inline-block bg-jungle text-parchment px-6 py-3 rounded-lg text-sm font-semibold hover:bg-jungle/90 transition-colors"
+            >
+              Sign up free
+            </Link>
           </div>
-          <Link
-            href="/signup"
-            className="inline-block bg-jungle text-parchment px-6 py-3 rounded-lg text-sm font-semibold hover:bg-jungle/90 transition-colors"
-          >
-            Sign up free
-          </Link>
-        </div>
         </Reveal>
       ) : (
         <div className="relative">
@@ -93,14 +97,14 @@ export default async function RoutePage({ params }) {
                   <Image src={dest.image} alt={dest.name} fill className="object-cover" />
                 </span>
                 <div className="relative border border-ink/15 rounded-lg p-4 bg-parchment group-hover:border-rust transition-colors overflow-hidden">
-  <div className="absolute -left-2 top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-white border border-ink/15" />
-  <div className="absolute -right-2 top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-white border border-ink/15" />
-  <p className="text-xs text-rust font-mono font-medium uppercase tracking-wide">
-    {i === 0 ? "Start" : i === stops.length - 1 ? "End" : `Stop ${String(i).padStart(2, "0")}`}
-  </p>
-  <p className="font-display font-bold text-lg">{dest.name}</p>
-  <p className="text-ink/60 text-sm line-clamp-2">{dest.intro}</p>
-</div>
+                  <div className="absolute -left-2 top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-white border border-ink/15" />
+                  <div className="absolute -right-2 top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-white border border-ink/15" />
+                  <p className="text-xs text-rust font-mono font-medium uppercase tracking-wide">
+                    {i === 0 ? "Start" : i === stops.length - 1 ? "End" : `Stop ${String(i).padStart(2, "0")}`}
+                  </p>
+                  <p className="font-display font-bold text-lg">{dest.name}</p>
+                  <p className="text-ink/60 text-sm line-clamp-2">{dest.intro}</p>
+                </div>
               </Link>
             ))}
           </div>

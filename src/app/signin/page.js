@@ -59,12 +59,12 @@ export default function SigninPage() {
         </button>
       </form>
 
-      <button
-        onClick={() => signIn("google")}
-        className="w-full border border-ink/10 rounded-lg p-3 text-sm font-medium hover:bg-ink/5"
-      >
-        Continue with Google
-      </button>
+<button
+  onClick={() => signIn("google", { callbackUrl: "/" })}
+  className="w-full border border-ink/10 rounded-lg p-3 text-sm font-medium hover:bg-ink/5"
+>
+  Continue with Google
+</button>
 
       <p className="text-sm text-ink/60 mt-4 text-center">
         No account?{" "}

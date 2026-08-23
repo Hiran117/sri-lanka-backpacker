@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
+import Link from "next/link";
 import { signUp } from "./actions";
 
 export default function SignupPage() {
@@ -28,7 +29,7 @@ export default function SignupPage() {
   return (
     <div className="max-w-sm mx-auto px-4 py-16">
       <h1 className="font-display font-bold text-2xl mb-6">Create your account</h1>
-      <form onSubmit={handleSubmit} className="flex flex-col gap-3">
+      <form onSubmit={handleSubmit} className="flex flex-col gap-3 mb-4">
         <input
           type="text"
           placeholder="Name"
@@ -62,6 +63,20 @@ export default function SignupPage() {
           {loading ? "Creating account..." : "Sign up"}
         </button>
       </form>
+
+      <button
+        onClick={() => signIn("google", { callbackUrl: "/" })}
+        className="w-full border border-ink/10 rounded-lg p-3 text-sm font-medium hover:bg-ink/5"
+      >
+        Continue with Google
+      </button>
+
+      <p className="text-sm text-ink/60 mt-4 text-center">
+        Already have an account?{" "}
+        <Link href="/signin" className="text-tea hover:underline">
+          Sign in
+        </Link>
+      </p>
     </div>
   );
 }

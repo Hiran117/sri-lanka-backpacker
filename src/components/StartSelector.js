@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { routes } from "@/data/routes";
 
 const destinations = [
   { slug: "colombo", name: "Colombo" },
@@ -12,7 +13,7 @@ const destinations = [
 ];
 
 export default function StartSelector() {
-  const [mode, setMode] = useState(null);
+  const [mode, setMode] = useState(null); // null | "routes" | "select"
   const router = useRouter();
 
   return (
@@ -24,16 +25,43 @@ export default function StartSelector() {
       {!mode && (
         <div className="grid sm:grid-cols-2 gap-3">
           <button
-            onClick={() => router.push("/routes/full-circuit")}
+            onClick={() => setMode("routes")}
             className="rounded-xl bg-tea text-cream py-3 px-4 font-medium hover:bg-tea/90 transition-colors"
           >
-            Just landed — guide me A to Z
+            Just landed — pick a route
           </button>
           <button
             onClick={() => setMode("select")}
             className="rounded-xl border border-tea text-tea py-3 px-4 font-medium hover:bg-tea/10 transition-colors"
           >
             I'm already at a place
+          </button>
+        </div>
+      )}
+
+      {mode === "routes" && (
+        <div className="flex flex-col gap-3">
+          {routes.map((route) => (
+            <button
+              key={route.slug}
+              onClick={() => router.push(`/routes/${route.slug}`)}
+              className="text-left rounded-xl border border-ink/10 p-4 hover:border-terracotta transition-colors bg-white"
+            >
+              <div className="flex items-center justify-between mb-1">
+                <span className="text-xs font-semibold text-terracotta bg-terracotta/10 px-2.5 py-1 rounded-full">
+                  {route.popularity}
+                </span>
+                <span className="text-xs text-ink/50">{route.days}</span>
+              </div>
+              <p className="font-display font-bold">{route.name}</p>
+              <p className="text-ink/60 text-sm">{route.tagline}</p>
+            </button>
+          ))}
+          <button
+            onClick={() => setMode(null)}
+            className="text-sm text-ink/50 mt-2 text-left"
+          >
+            ← Back
           </button>
         </div>
       )}

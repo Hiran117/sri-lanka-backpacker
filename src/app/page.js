@@ -1,14 +1,13 @@
 import StartSelector from "@/components/StartSelector";
 import Link from "next/link";
-import Image from "next/image";
-import { destinations } from "@/data/destinations";
+import { routes } from "@/data/routes";
+import { getDestination } from "@/data/destinations";
 import { auth } from "@/auth";
-
-const circuit = [...destinations].sort((a, b) => a.order - b.order);
 
 export default async function Home() {
   const session = await auth();
   const signedIn = !!session?.user?.email;
+
   return (
     <>
       {/* Hero */}
@@ -40,64 +39,51 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* Trail overview — connected route flow */}
+      {/* Routes overview */}
       <section className="max-w-6xl mx-auto px-4 py-20">
         <h2 className="font-display font-bold text-2xl md:text-3xl text-center mb-2">
-          The Classic Circuit
+          Choose Your Route
         </h2>
-        <p className="text-ink/60 text-center mb-14">
-          Hill country to coast — follow the route, or jump to any stop.
+        <p className="text-ink/60 text-center mb-12">
+          Every route starts and ends in Colombo. Pick based on your time and style.
         </p>
 
-        <div className="relative">
-          {/* Desktop: horizontal connected flow */}
-          <div className="hidden md:flex items-center justify-between relative">
-            <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-linear-to-r from-tea/20 via-terracotta/40 to-tea/20 -translate-y-1/2" />
-            {circuit.map((dest, i) => (
-              <div key={dest.slug} className="relative z-10 flex items-center">
-                <Link
-                  href={`/destinations/${dest.slug}`}
-                  className="group flex flex-col items-center gap-3 animate-fade-in"
-                  style={{ animationDelay: `${i * 100}ms` }}
-                >
-                  <div className="relative w-24 h-24 rounded-full overflow-hidden ring-4 ring-cream shadow-md group-hover:ring-terracotta transition-all">
-                    <Image src={dest.image} alt={dest.name} fill className="object-cover group-hover:scale-110 transition-transform duration-500" />
-                  </div>
-                  <div className="text-center">
-                    <p className="text-xs text-terracotta font-medium">Stop {dest.order}</p>
-                    <p className="font-display font-bold text-sm">{dest.name}</p>
-                  </div>
-                </Link>
-                {i < circuit.length - 1 && (
-                  <span className="text-terracotta text-2xl mx-2">→</span>
-                )}
-              </div>
-            ))}
-          </div>
+        <div className="grid sm:grid-cols-2 gap-5">
+          {routes.map((route) => {
+            const uniqueSlugs = route.destinationSlugs.filter(
+              (s, i, arr) => arr.indexOf(s) === i
+            );
+            const previewDests = uniqueSlugs
+              .slice(0, 4)
+              .map((s) => getDestination(s)?.name)
+              .filter(Boolean);
 
-          {/* Mobile: vertical connected flow */}
-          <div className="md:hidden flex flex-col gap-0">
-            {circuit.map((dest, i) => (
-              <div key={dest.slug} className="flex flex-col items-center">
-                <Link
-                  href={`/destinations/${dest.slug}`}
-                  className="group flex items-center gap-4 w-full bg-white border border-ink/10 rounded-2xl p-3 hover:border-terracotta transition-colors animate-fade-in"
-                  style={{ animationDelay: `${i * 80}ms` }}
-                >
-                  <div className="relative w-16 h-16 rounded-full overflow-hidden shrink-0">
-                    <Image src={dest.image} alt={dest.name} fill className="object-cover" />
-                  </div>
-                  <div>
-                    <p className="text-xs text-terracotta font-medium">Stop {dest.order}</p>
-                    <p className="font-display font-bold text-base">{dest.name}</p>
-                  </div>
-                </Link>
-                {i < circuit.length - 1 && (
-                  <span className="text-terracotta text-xl my-1">↓</span>
+            return (
+              <Link
+                key={route.slug}
+                href={`/routes/${route.slug}`}
+                className="group border border-ink/10 rounded-2xl p-5 bg-white hover:border-terracotta hover:shadow-md transition-all"
+              >
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-xs font-semibold text-terracotta bg-terracotta/10 px-2.5 py-1 rounded-full">
+                    {route.popularity}
+                  </span>
+                  <span className="text-xs text-ink/50">{route.days}</span>
+                </div>
+                <p className="font-display font-bold text-xl mb-1">{route.name}</p>
+                <p className="text-ink/60 text-sm mb-3">{route.tagline}</p>
+                <p className="text-xs text-ink/50">
+                  {uniqueSlugs.length} stops · {previewDests.join(" → ")}
+                  {uniqueSlugs.length > 4 ? "..." : ""}
+                </p>
+                {!signedIn && (
+                  <p className="text-xs text-tea font-medium mt-3">
+                    Sign in to see the full day-by-day route →
+                  </p>
                 )}
-              </div>
-            ))}
-          </div>
+              </Link>
+            );
+          })}
         </div>
       </section>
 

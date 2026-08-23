@@ -5,9 +5,18 @@ const queries = {
   colombo: "Colombo Sri Lanka skyline",
   kandy: "Temple of the Tooth Kandy",
   ella: "Nine Arch Bridge Ella Sri Lanka",
+  "nuwara-eliya": "Nuwara Eliya tea plantation",
   mirissa: "Mirissa beach Sri Lanka",
   galle: "Galle Fort Sri Lanka",
-  "nuwara-eliya": "Nuwara Eliya tea plantation",
+  sigiriya: "Sigiriya Rock Fortress Sri Lanka",
+  dambulla: "Dambulla Cave Temple Sri Lanka",
+  polonnaruwa: "Polonnaruwa ancient ruins Sri Lanka",
+  anuradhapura: "Anuradhapura Sri Lanka stupa",
+  "arugam-bay": "Arugam Bay surf Sri Lanka",
+  trincomalee: "Trincomalee beach Sri Lanka",
+  jaffna: "Jaffna Sri Lanka",
+  udawalawe: "Udawalawe elephant safari",
+  negombo: "Negombo beach Sri Lanka",
 };
 
 async function run() {

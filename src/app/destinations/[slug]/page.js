@@ -10,6 +10,7 @@ import ReviewSection from "@/components/ReviewSection";
 import GpsCheckin from "@/components/GpsCheckin";
 import Reveal from "@/components/Reveal";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import TransportIcon from "@/components/TransportIcon";
 
 export function generateStaticParams() {
   return destinations.map((d) => ({ slug: d.slug }));

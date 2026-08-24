@@ -1,6 +1,7 @@
 import { destinations } from "@/data/destinations";
+import { getCategory } from "@/data/categories";
 import Link from "next/link";
-import Image from "next/image";
+import ImageWithSkeleton from "@/components/ImageWithSkeleton";
 import Reveal from "@/components/Reveal";
 
 export const metadata = {
@@ -47,14 +48,20 @@ export default function DestinationsIndexPage() {
               className="card-press group block border border-ink/10 rounded-2xl overflow-hidden bg-white hover:border-rust hover:shadow-lift transition-all duration-300 h-full"
             >
               <div className="relative w-full h-48 overflow-hidden">
-                <Image
+                <ImageWithSkeleton
                   src={dest.image}
                   alt={dest.name}
-                  fill
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   className="object-cover group-hover:scale-110 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-linear-to-t from-ink/60 via-ink/10 to-transparent" />
+                {dest.category && (
+                  <span
+                    className={`absolute top-3 left-3 text-xs font-medium px-2.5 py-1 rounded-full border backdrop-blur-sm shadow-sm ${getCategory(dest.category).badge}`}
+                  >
+                    {getCategory(dest.category).label}
+                  </span>
+                )}
                 <div className="absolute bottom-0 left-0 right-0 p-4">
                   <p className="font-display font-bold text-xl text-parchment drop-shadow-lg">{dest.name}</p>
                 </div>

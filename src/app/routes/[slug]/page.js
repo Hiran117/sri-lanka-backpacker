@@ -6,6 +6,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import Reveal from "@/components/Reveal";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import ImageWithSkeleton from "@/components/ImageWithSkeleton";
 
 export function generateStaticParams() {
   return routes.map((r) => ({ slug: r.slug }));

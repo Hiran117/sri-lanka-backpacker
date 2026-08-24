@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AuthButton from "@/components/AuthButton";
+import MobileTabBar from "@/components/MobileTabBar";
 
 const display = Space_Grotesk({
   subsets: ["latin"],
